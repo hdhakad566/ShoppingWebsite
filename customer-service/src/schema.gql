@@ -20,6 +20,7 @@ type OrderHistory {
   productId: String!
   quantity: Int!
   status: String!
+  orderId: String
   createdAt: DateTime!
 }
 
@@ -54,6 +55,7 @@ input CreateOrderHistoryInput {
   productId: String!
   quantity: Int!
   status: String! = "PENDING"
+  orderId: String
 }
 
 input UpdateOrderHistoryInput {
@@ -61,4 +63,5 @@ input UpdateOrderHistoryInput {
   productId: String
   quantity: Int
   status: String = "PENDING"
+  orderId: String
 }

@@ -14,6 +14,9 @@ import { OrderModule } from './order/order.module';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       playground: true,
+      subscriptions: {
+        'graphql-ws': true,
+      },
     }),
     MongooseModule.forRoot('mongodb://localhost:27017/inventory-order-db'),
     ProductModule,

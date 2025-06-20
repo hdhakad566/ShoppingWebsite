@@ -37,6 +37,7 @@ type Mutation {
   createOrder(createOrderInput: CreateOrderInput!): Order!
   updateOrder(id: ID!, updateOrderInput: UpdateOrderInput!): Order!
   removeOrder(id: ID!): Order!
+  updateOrderStatus(orderId: ID!, status: String!): Order!
 }
 
 input CreateProductInput {
@@ -61,4 +62,8 @@ input UpdateOrderInput {
   productId: String
   quantity: Int
   customerId: String
+}
+
+type Subscription {
+  orderStatusUpdated(customerId: ID!): Order!
 }

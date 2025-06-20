@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import { customerClient, inventoryClient } from '../lib/graphql';
-import { gql } from 'graphql-request';
+import { inventoryClient } from '../lib/graphql';
+import { gql } from '@apollo/client';
 import type { Order } from '../types';
 
 const CREATE_ORDER = gql`
@@ -44,11 +44,14 @@ const CartPage: React.FC = () => {
           productId: item._id,
           quantity: item.cartQuantity,
         };
-        return inventoryClient.request(CREATE_ORDER, { createOrderInput });
+        return inventoryClient.mutate({ 
+          mutation: CREATE_ORDER, 
+          variables: { createOrderInput } 
+        });
       });
 
       const responses = await Promise.all(orderPromises);
-      setOrderResponse(responses.map((res: any) => res.createOrder));
+      setOrderResponse(responses.map((res: any) => res.data.createOrder));
       clearCart();
     } catch (err: any) {
       setError(err.response?.errors[0]?.message || 'Failed to place one or more orders.');

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { gql } from 'graphql-request';
+import { gql } from '@apollo/client';
 import { inventoryClient } from '../lib/graphql';
 import { useCart } from '../context/CartContext';
 import type { Product } from '../types';
@@ -25,7 +25,9 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await inventoryClient.request<{ products: Product[] }>(GET_PRODUCTS_QUERY);
+        const { data } = await inventoryClient.query({
+          query: GET_PRODUCTS_QUERY,
+        });
         setProducts(data.products);
       } catch (err) {
         setError('Failed to fetch products. Is the inventory service running?');

@@ -36,4 +36,8 @@ export class OrderService {
   async remove(id: string): Promise<Order | null> {
     return this.orderModel.findByIdAndDelete(id).exec();
   }
+
+  async updateStatus(id: string, status: string): Promise<Order | null> {
+    return this.orderModel.findByIdAndUpdate(id, { status }, { new: true }).exec();
+  }
 } 

@@ -24,6 +24,10 @@ export class OrderHistory extends Document {
   @Field()
   status: string;
 
+  @Prop()
+  @Field({ nullable: true })
+  orderId?: string;
+
   @Field()
   createdAt: Date;
 }

@@ -25,6 +25,7 @@ export interface OrderHistory {
     productId: string;
     quantity: number;
     status: string;
+    orderId?: string;
     createdAt: string;
 }
 

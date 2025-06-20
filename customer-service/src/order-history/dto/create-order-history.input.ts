@@ -13,4 +13,7 @@ export class CreateOrderHistoryInput {
 
   @Field({ defaultValue: 'PENDING' })
   status: string;
+
+  @Field({ nullable: true })
+  orderId?: string;
 } 

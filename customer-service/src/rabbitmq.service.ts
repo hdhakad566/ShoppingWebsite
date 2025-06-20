@@ -32,6 +32,7 @@ export class RabbitMQService implements OnModuleInit {
           productId: order.productId,
           quantity: order.quantity,
           status: order.status,
+          orderId: order._id,
         });
         this.channel.ack(msg);
       }

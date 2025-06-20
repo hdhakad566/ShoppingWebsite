@@ -481,4 +481,18 @@ input::placeholder {
   .customer-id-input input {
     min-width: auto;
   }
+}
+
+/* Add this at the end of the file */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.pulse {
+  animation: pulse 1s infinite;
 } 
