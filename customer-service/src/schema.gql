@@ -1,0 +1,64 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Customer {
+  _id: ID!
+  email: String!
+  name: String!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type OrderHistory {
+  _id: ID!
+  customerId: String!
+  productId: String!
+  quantity: Int!
+  status: String!
+  createdAt: DateTime!
+}
+
+type Query {
+  customers: [Customer!]!
+  customer(id: ID!): Customer!
+  orderHistories: [OrderHistory!]!
+  orderHistory(id: ID!): OrderHistory!
+}
+
+type Mutation {
+  createCustomer(createCustomerInput: CreateCustomerInput!): Customer!
+  updateCustomer(id: ID!, updateCustomerInput: UpdateCustomerInput!): Customer!
+  removeCustomer(id: ID!): Customer!
+  createOrderHistory(createOrderHistoryInput: CreateOrderHistoryInput!): OrderHistory!
+  updateOrderHistory(id: ID!, updateOrderHistoryInput: UpdateOrderHistoryInput!): OrderHistory!
+  removeOrderHistory(id: ID!): OrderHistory!
+}
+
+input CreateCustomerInput {
+  email: String!
+  name: String!
+}
+
+input UpdateCustomerInput {
+  email: String
+  name: String
+}
+
+input CreateOrderHistoryInput {
+  customerId: String!
+  productId: String!
+  quantity: Int!
+  status: String! = "PENDING"
+}
+
+input UpdateOrderHistoryInput {
+  customerId: String
+  productId: String
+  quantity: Int
+  status: String = "PENDING"
+}
