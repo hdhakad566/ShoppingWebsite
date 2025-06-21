@@ -26,7 +26,7 @@ The application is split into three main parts:
 3.  **`frontend` (Port 5173):**
     -   A React application that allows users to view products, create customers, place orders, and view their order history.
 
-![Architecture Diagram](https://i.imgur.com/example.png)  <-- We can create a diagram for this if you like.
+ 
 
 ## How to Run the Application
 
